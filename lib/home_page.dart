@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Container(
           child: Text("Hello to my $days days trip"),
+          decoration: BoxDecoration(color: Colors.blue),
         ),
       ),
       drawer: Drawer(),
