@@ -9,15 +9,15 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home page"),
+        title: const Text("Home page"),
       ),
       body: Center(
         child: Container(
           child: Text("Hello to my $days days trip"),
-          decoration: BoxDecoration(color: Colors.blue),
+          decoration: const BoxDecoration(color: Colors.blue),
         ),
       ),
-      drawer: Drawer(),
+      drawer: const Drawer(),
     );
   }
 }
