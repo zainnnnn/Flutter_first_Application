@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool changeButton = false;
+  // final _controller = TextEditingController();
+
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +34,12 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 20.0,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 0.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 0.0),
               child: Text(
-                "Login",
-                style: TextStyle(
-                    fontSize: 64,
+                "Welcome $name !",
+                style: const TextStyle(
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.blue),
               ),
@@ -36,10 +52,15 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
+                    // controller: _controller,
                     decoration: const InputDecoration(
                       labelText: "Username",
                       hintText: "Enter username",
                     ),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -49,24 +70,64 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(
                     height: 30.0,
                   ),
-                  ElevatedButton(
-                    child: Text("Login"),
-                    onPressed: () {
-                      Fluttertoast.showToast(
-                          msg: "Pressed",
-                          toastLength: Toast.LENGTH_SHORT,
-                          backgroundColor: Colors.yellow,
-                          textColor: Colors.white,
-                          fontSize: 15.0);
-                      // Navigator.pushNamed(context, "/home_page");
-                    },
-                    style: ButtonStyle(
-                      minimumSize:
-                          MaterialStateProperty.all(const Size(100, 40)),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.lightBlue),
+
+                  Ink(
+                    child: InkWell(
+                      splashColor: Colors.green,
+                      highlightColor: Colors.yellow,
+                      onTap: () async {
+                        setState(() {
+                          changeButton = true;
+                        });
+                        await Future.delayed(const Duration(seconds: 2));
+                        // ignore: use_build_context_synchronously
+                        Navigator.pushNamed(context, "/home_page");
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(seconds: 1),
+                        height: 40,
+                        width: changeButton ? 70 : 130,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            // shape: changeButton
+                            // ? BoxShape.circle
+                            //     : BoxShape.rectangle,
+                            borderRadius:
+                                BorderRadius.circular(changeButton ? 40 : 10)),
+                        child: changeButton
+                            ? const Icon(
+                                Icons.done,
+                                color: Colors.white,
+                              )
+                            : const Text(
+                                "Login",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                      ),
                     ),
                   )
+                  // ElevatedButton(
+                  //   child: Text("Login"),
+                  //   onPressed: () {
+                  //     Fluttertoast.showToast(
+                  //         msg: "Pressed",
+                  //         toastLength: Toast.LENGTH_SHORT,
+                  //         backgroundColor: Colors.yellow,
+                  //         textColor: Colors.white,
+                  //         fontSize: 15.0);
+                  //     // Navigator.pushNamed(context, "/home_page");
+                  // // },
+                  // style: ButtonStyle(
+                  //   minimumSize:
+                  //       MaterialStateProperty.all(const Size(100, 40)),
+                  //   backgroundColor:
+                  //       MaterialStateProperty.all(Colors.lightBlue),
+                  // ),
+                  // )
                 ],
               ),
             )
