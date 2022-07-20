@@ -20,13 +20,13 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: GoogleFonts.lato().fontFamily),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       // initialRoute: "/home_page", //for main page
       routes: {
-        "/": (context) => LoginPage(),
-        "/home_page": (context) => HomePage(),
-        "/login_page": (context) => LoginPage(),
-        "/signUP": (context) => SignUp(),
+        "/": (context) => const HomePage(),
+        "/home_page": (context) => const HomePage(),
+        "/login_page": (context) => const LoginPage(),
+        "/signUP": (context) => const SignUp(),
       },
     );
   }
