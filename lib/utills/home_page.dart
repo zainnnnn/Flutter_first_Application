@@ -10,12 +10,17 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home page"),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 70.0),
+          child: Text(
+            "Catalog app",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
       ),
       body: Center(
         child: Container(
           child: Text("Hello to my $days days trip"),
-          decoration: const BoxDecoration(color: Colors.blue),
         ),
       ),
       drawer: const MyDrawer(),

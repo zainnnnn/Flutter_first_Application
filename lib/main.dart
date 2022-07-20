@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home_page.dart';
-import 'package:flutter_application_1/login_page.dart';
-import 'package:flutter_application_1/signUp.dart';
+import 'package:flutter_application_1/utills/home_page.dart';
+import 'package:flutter_application_1/utills/login_page.dart';
+import 'package:flutter_application_1/utills/signUp.dart';
+import 'package:flutter_application_1/wigdets/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main(List<String> args) {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // home: HomePage(),
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          fontFamily: GoogleFonts.lato().fontFamily),
-      darkTheme: ThemeData(brightness: Brightness.dark),
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
       // initialRoute: "/home_page", //for main page
       routes: {
